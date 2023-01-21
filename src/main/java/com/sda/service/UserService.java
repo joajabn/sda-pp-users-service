@@ -1,15 +1,13 @@
 package com.sda.service;
 
 import com.sda.dao.UsersDAO;
-import com.sda.db.HibernateUtils;
 import com.sda.dto.UserDTO;
 import com.sda.exception.NotFoundException;
 import com.sda.exception.UsernameConflictException;
 import com.sda.mapper.UserMapper;
 import com.sda.model.User;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 import java.util.List;
 
