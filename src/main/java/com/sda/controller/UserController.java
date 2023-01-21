@@ -2,6 +2,8 @@ package com.sda.controller;
 
 import com.sda.dto.UserDTO;
 import com.sda.exception.NotFoundException;
+import com.sda.exception.UsernameConflictException;
+import com.sda.model.User;
 import com.sda.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -33,6 +35,25 @@ public class UserController {
             log.error("NotFoundException: {}", ex.getMessage());
         }
 
+    }
+
+    public void deleteByUsername(String username){
+        try {
+            userService.deleteByUsername(username);
+            System.out.printf("User %s deleted!%n", username);
+        } catch (NotFoundException ex) {
+            log.error("NotFoundException: {}", ex.getMessage());
+        }
+
+    }
+
+    public void create(User user){
+        try {
+            userService.create(user);
+            System.out.printf("User with username %s created!%n", user.getUsername());
+        } catch (UsernameConflictException ex) {
+            log.error("UsernameConflictException: {}", ex.getMessage());
+        }
     }
 
 }
